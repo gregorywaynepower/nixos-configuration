@@ -144,6 +144,8 @@
 
    # Productivity
    kdePackages.kontact
+   kdePackages.kmail
+   kdePackages.kmail-account-wizard
    libreoffice
    
    # Images
