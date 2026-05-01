@@ -1,6 +1,17 @@
 # NixOS Configuration Goals
 
-1. Get Oracle Virtualbox working
+1. Get Oracle VirtualBox working
+    a. VirtualBox does not work with Linux Kernel until version VirtualBox 2.6.8
+    b. Either rollback kernel driver, pull and customize package, or use other drive.
+
+```
+  # Install VirtualBox
+  virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.host.enableExtensionPack = true;
+  virtualisation.virtualbox.guest.clipboard = true;
+  users.extraGroups.vboxusers.members = [ "gregorywpower" ];
+```
+
 2. Evaluate nixpkgs-unstable as software source
 3. Research Home Manager
 4. Research Flakes
