@@ -29,3 +29,14 @@
 [On Nix's Language: Introduction](https://tales.mbivert.com/on-nix-language/)
 [Some notes on nix flakes - Julia Evans](https://jvns.ca/blog/2023/11/11/notes-on-nix-flakes/)
 [Tour of Nix](https://nixcloud.io/tour/?id=introduction%2Fnix)
+
+## How do I remove older generations from the bootloader?
+
+First, remove some system generations of your system, then rebuild. The rebuild script will remove stale boot entries.
+
+The first command, in the example below, removes system generations older than 14 days.
+
+```
+sudo nix-env --delete-generations --profile /nix/var/nix/profiles/system 14d
+sudo nixos-rebuild boot
+```
