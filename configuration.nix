@@ -106,6 +106,13 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Create an alias for the unstable channel
+  nixpkgs.config.packageOverrides = pkgs: {
+    unstable = import <nixos-unstable> { # pass the nixpkgs config to the unstable alias # to ensure `allowUnfree = true;` is propagated:
+      config = config.nixpkgs.config;
+    };
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -139,7 +146,7 @@
     protonup-ng
 
     # Music
-    shortwave
+    unstable.shortwave
     spotify
 
     # Browsers and Desktop Applications
@@ -185,8 +192,8 @@
 
     # IDEs
     vscode-fhs
-    # positron-bin # will need to move to unstable for this package
-    # dbeaver-bin  # will need to move to unstable for this package
+    unstable.positron-bin # will need to move to unstable for this package
+    unstable.dbeaver-bin  # will need to move to unstable for this package
 
 
     # Geospatial
@@ -202,7 +209,7 @@
     postgresql18Packages.pgrouting
     postgresql18Packages.postgis
 
-    duckdb        # will need to move to unstable for this package
+    unstable.duckdb        # will need to move to unstable for this package
     sqlite
  
   ];
