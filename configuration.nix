@@ -125,20 +125,21 @@
     wl-clipboard
 
     # Developer Tools
-    bacon
-    clippy
-    gh
-    git
+    unstable.bacon
+    unstable.clippy
+    unstable.gh
+    unstable.git
     gnupg
-    neovim
-    pixi
-    rustup
+    unstable.neovim
+    unstable.pixi
+    unstable.rustup
     tmux
     marksman # markdown helper
     nil # langauage server for nix
+    gcc
 
     # Reading
-    calibre
+    unstable.calibre
 
     # Gaming
     discord
@@ -200,7 +201,7 @@
     gdal
     grass
     pdal
-    qgis
+    unstable.qgis
     saga
 
     # Databases
