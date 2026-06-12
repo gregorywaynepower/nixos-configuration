@@ -148,12 +148,12 @@
     protonup-ng
 
     # Music
-    unstable.shortwave
     spotify
 
     # Browsers and Desktop Applications
     bitwarden-desktop
     brave
+    slack
     
     # Audio and Video
     ffmpeg-full
