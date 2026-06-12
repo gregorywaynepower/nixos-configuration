@@ -14,6 +14,10 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.kernel.sysctl = {
+    "vm.max_map_count" = 2147483642;
+  };
+
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
@@ -220,10 +224,10 @@
   # Steam
   programs.steam = {
     enable = true;
-    extest.enable = true;
-    extraPackages = [
-       pkgs.hidapi
-    ];
+    # extest.enable = true;
+    # extraPackages = [
+    #    pkgs.hidapi
+    # ];
   };
   programs.steam.gamescopeSession.enable = true;
   hardware.steam-hardware.enable = true;
