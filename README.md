@@ -13,22 +13,38 @@
 ```
 
 2. Evaluate nixpkgs-unstable as software source
-3. Research Home Manager
-4. Research Flakes
+3. Research Flakes
+4. Research Home Manager
 5. [Set up and migrate Postgres database](https://nixos.org/manual/nixos/stable/#module-postgresql)
 6. Keep tabs on SELinux implementation
 
 
-[NixOS Manual](https://nixos.org/manual/nixos/stable/)
-[Nixpkgs Manual](https://nixos.org/manual/nixpkgs/stable/)
-[Nix.dev](https://nix.dev/)
-[Nix Best Practices](https://nix.dev/guides/best-practices)
-[Nix Flakes, An introduction and tutorial](https://www.tweag.io/blog/2020-05-25-flakes/)
-[NixOS & Flakes Book](https://nixos-and-flakes.thiscute.world/introduction/)
-[Ayats.org](https://ayats.org/)
-[On Nix's Language: Introduction](https://tales.mbivert.com/on-nix-language/)
-[Some notes on nix flakes - Julia Evans](https://jvns.ca/blog/2023/11/11/notes-on-nix-flakes/)
-[Tour of Nix](https://nixcloud.io/tour/?id=introduction%2Fnix)
+- [NixOS Manual](https://nixos.org/manual/nixos/stable/)
+- [Nixpkgs Manual](https://nixos.org/manual/nixpkgs/stable/)
+- [Nix.dev](https://nix.dev/)
+- [Nix Best Practices](https://nix.dev/guides/best-practices)
+- [Nix Flakes, An introduction and tutorial](https://www.tweag.io/blog/2020-05-25-flakes/)
+- [NixOS & Flakes Book](https://nixos-and-flakes.thiscute.world/introduction/)
+- [Ayats.org](https://ayats.org/)
+- [On Nix's Language: Introduction](https://tales.mbivert.com/on-nix-language/)
+- [Some notes on nix flakes - Julia Evans](https://jvns.ca/blog/2023/11/11/notes-on-nix-flakes/)
+- [Tour of Nix](https://nixcloud.io/tour/?id=introduction%2Fnix)
+
+## How do I investigate more into this?
+
+```
+man 5 configuration.nix <-- NixOS man page for all module options
+man 5 home-configuration.nix <-- Same for Home-Manager (both work offline)
+
+nix eval examples:
+
+$ nix eval .#nixosConfigurations.(hostname).config.services.openssh.enable
+true
+
+$ nix eval .#homeConfigurations.($env.USER)@(hostname).config.programs.nushell.enable
+true
+
+```
 
 ## How do I remove older generations from the bootloader in using channels (not flakes)?
 

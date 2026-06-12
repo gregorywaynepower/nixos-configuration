@@ -2,41 +2,25 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
-     # Nix Kernel Binary Cache
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
-     nix.settings = {
-      substituters = [
-        "https://cache.garnix.io"
-        "https://attic.xuyh0120.win/lantian"
-      ];
-      trusted-public-keys = [
-        "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
-        "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
-      ];
-    }; 
-
-  nixpkgs.overlays = [ inputs.nix-cachyos-kernel.overlays.pinned ]; # Guarantees you have binary cache, but initializes another nixpkgs instance.
-  
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.kernel.sysctl = {
-    "vm.max_map_count" = 2147483642;
-  };
-  
-
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  # boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto; 
 
   networking.hostName = "bonobo-ws"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -47,12 +31,6 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-  
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    openFirewall = true;
-  };
 
   # Set your time zone.
   time.timeZone = "America/New_York";
@@ -74,7 +52,10 @@
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = true;
+  services.xserver = {
+    enable = true;
+    videoDrivers = [ "nvidia" ];
+  };
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
@@ -112,9 +93,12 @@
   users.users.gregorywpower = {
     isNormalUser = true;
     description = "Gregory Power";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
@@ -124,8 +108,29 @@
   # Add SMS functionality for KDE Kontact
   programs.kdeconnect.enable = true;
 
+  # Enables KDE PIM base packages
+  programs.kde-pim = {
+    enable = true;
+    kontact = true;
+  };
+
   # Add nh, yet another Nix CLI helper
   programs.nh.enable = true;
+
+  # Steam Configuration
+  programs.steam = {
+    enable = true;
+    localNetworkGameTransfers.openFirewall = true;
+    remotePlay.openFirewall = true;
+    extraPackages = [ pkgs.hidapi ];
+  };
+
+  # GameMode is a daemon/lib combo for Linux that allows games to request a set
+  # of optimisations be temporarily applied to the host OS and/or a game
+  # process.
+
+  # https://github.com/FeralInteractive/gamemode
+  programs.gamemode.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -133,129 +138,64 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    kdePackages.kate
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
 
     # System Tools
     pciutils
     wl-clipboard
 
-    # Developer Tools
-    bacon
-    clippy
-    gh
-    git
-    gnupg
+    # General Development Tools
+    vim
     neovim
-    pixi
-    rustup
+    git
+    gh
+    gnupg
+
+    # Nix Development Tools
     nix-init
-    tmux
-    marksman # markdown helper
-    nil # langauage server for nix
-    gcc
+    nil # language server for nix
+
+    # Rust Development Tools
+    rustup
+    clippy
+    bacon
 
     # Reading
     calibre
 
-    # Gaming
+    # Voice
     discord
-    mangohud
-    protonup-ng
+
+    # Audio and Video
+    ffmpeg-full
+    vlc
+
+    # Images
+    imagemagick
 
     # Music
     spotify
 
     # Browsers and Desktop Applications
     bitwarden-desktop
-    brave
     slack
-    
-    # Audio and Video
-    ffmpeg-full
-    kdePackages.kdenlive
-    vlc
 
-   # Productivity
-   kdePackages.kontact
-   kdePackages.kontactinterface
-   kdePackages.kmail
-   kdePackages.kmail-account-wizard
-   kdePackages.korganizer
-   kdePackages.kaddressbook
-   kdePackages.akregator # RSS Feed Reader
-   kdePackages.akonadi # Cross-desktop storage service for PIM data providing concurrent access
-   kdePackages.kdepim-runtime
-   kdePackages.kdepim-addons
-   kdePackages.konversation # IRC client
-   kdePackages.kcalc # Calculator
-   kdePackages.kcharselect # Character map
-   kdePackages.kclock # Clock app
-   kdePackages.kcolorchooser # Color picker
-   kdePackages.kolourpaint # Simple paint program
-   kdiff3 # File/directory comparison tool
+    # Productivity
+    kdePackages.kate
+    kdePackages.kmail-account-wizard
+    kdePackages.konversation # IRC client
+    kdePackages.kcalc # Calculator
+    kdePackages.kcharselect # Character map
+    kdePackages.kclock # Clock app
+    kdePackages.kcolorchooser # Color picker
+    kdePackages.kolourpaint # Simple paint program
+    kdiff3 # File/directory comparison tool
+    libreoffice
 
-   # Hardware/System Utilities (Optional)
-   kdePackages.isoimagewriter # Write hybrid ISOs to USB
-   kdePackages.partitionmanager # Disk and partition management
-   wayland-utils # Wayland diagnostic tools
-   wl-clipboard # Wayland copy/paste support
-
-   libreoffice
-   
-   # Images
-   blender
-   gimp
-   imagemagick
-
-    # IDEs
-    vscode-fhs
-    positron-bin
-    dbeaver-bin
-
-
-    # Geospatial
-    gdal
-    grass
-    pdal
-    qgis
-    saga
-
-    # Databases
-    duckdb
-    sqlite
- 
+    # Hardware/System Utilities (Optional)
+    kdePackages.isoimagewriter # Write hybrid ISOs to USB
+    kdePackages.partitionmanager # Disk and partition management
   ];
-
-
-  # Steam
-  programs.steam = {
-    enable = true;
-  };
-  programs.steam.gamescopeSession.enable = true;
-  hardware.steam-hardware.enable = true;
-
-  # Proton
-  programs.gamemode.enable = true;
-
-  environment.sessionVariables = {
-   STEAM_EXTRA_COMPAT_TOOLS_PATHS = "$HOME/.steam/root/compatibilitytools.d";
-  };
-
-  # Nvidia
-  services.xserver.videoDrivers = ["nvidia"];
-
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-  };
-
-  hardware.nvidia = {
-    modesetting.enable = true;
-    open = true;
-    package = config.boot.kernelPackages.nvidiaPackages.latest;
-  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -276,6 +216,22 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
+  # Hardware Settings
+  hardware = {
+    bluetooth.enable = true;
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
+    nvidia = {
+      branch = "latest";
+      dynamicBoost.enable = true;
+      modesetting.enable = true;
+      powerManagement.enable = true;
+      open = true;
+    };
+  };
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
@@ -284,6 +240,4 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.11"; # Did you read the comment?
 
-  # Add Extra Experimental Features
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }
