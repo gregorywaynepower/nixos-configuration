@@ -127,6 +127,8 @@
     pixi
     rustup
     tmux
+    marksman # markdown helper
+    nil # langauage server for nix
 
     # Reading
     calibre
