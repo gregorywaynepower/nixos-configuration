@@ -144,8 +144,27 @@
 
    # Productivity
    kdePackages.kontact
+   kdePackages.kontactinterface
    kdePackages.kmail
    kdePackages.kmail-account-wizard
+   kdePackages.korganizer
+   kdePackages.kaddressbook
+   kdePackages.akregator # RSS Feed Reader
+   kdePackages.akonadi # Cross-desktop storage service for PIM data providing concurrent access
+   kdePackages.konversation # IRC client
+   kdePackages.kcalc # Calculator
+   kdePackages.kcharselect # Character map
+   kdePackages.kclock # Clock app
+   kdePackages.kcolorchooser # Color picker
+   kdePackages.kolourpaint # Simple paint program
+   kdiff3 # File/directory comparison tool
+
+   # Hardware/System Utilities (Optional)
+   kdePackages.isoimagewriter # Write hybrid ISOs to USB
+   kdePackages.partitionmanager # Disk and partition management
+   wayland-utils # Wayland diagnostic tools
+   wl-clipboard # Wayland copy/paste support
+
    libreoffice
    
    # Images
