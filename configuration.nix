@@ -149,6 +149,7 @@
 
     # System Tools
     pciutils
+    file
     wl-clipboard
     fd
     ripgrep
@@ -178,6 +179,7 @@
 
     # Audio and Video
     ffmpeg-full
+    kdePackages.kdenlive
     vlc
 
     # Images
@@ -188,6 +190,7 @@
 
     # Browsers and Desktop Applications
     bitwarden-desktop
+    blender
     slack
 
     # Productivity
