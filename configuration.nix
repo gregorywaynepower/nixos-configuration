@@ -35,7 +35,8 @@
   
 
   # Use latest kernel.
-  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto; 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto; 
 
   networking.hostName = "bonobo-ws"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
