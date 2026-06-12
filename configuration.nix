@@ -112,6 +112,7 @@
   programs.kde-pim = {
     enable = true;
     kontact = true;
+    kmail = true;
   };
 
   # Add nh, yet another Nix CLI helper
@@ -182,7 +183,6 @@
 
     # Productivity
     kdePackages.kate
-    kdePackages.kmail
     kdePackages.kmail-account-wizard
     kdePackages.konversation # IRC client
     kdePackages.kcalc # Calculator
