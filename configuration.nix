@@ -148,6 +148,7 @@
     # General Development Tools
     vim
     neovim
+    helix
     git
     gh
     gnupg
