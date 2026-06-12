@@ -108,9 +108,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Enable PostgreSQL Services
-  services.postgresql.enable = true;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.gregorywpower = {
     isNormalUser = true;
@@ -214,8 +211,8 @@
 
     # IDEs
     vscode-fhs
-    positron-bin # will need to move to unstable for this package
-    dbeaver-bin  # will need to move to unstable for this package
+    positron-bin
+    dbeaver-bin
 
 
     # Geospatial
@@ -226,12 +223,7 @@
     saga
 
     # Databases
-    postgresql_18
-    postgresql18Packages.pg_repack
-    postgresql18Packages.pgrouting
-    postgresql18Packages.postgis
-
-    duckdb        # will need to move to unstable for this package
+    duckdb
     sqlite
  
   ];
