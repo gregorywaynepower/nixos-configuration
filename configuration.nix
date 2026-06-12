@@ -17,6 +17,7 @@
   boot.kernel.sysctl = {
     "vm.max_map_count" = 2147483642;
   };
+  
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -176,6 +177,7 @@
    kdePackages.kdepim-runtime
    kdePackages.kdepim-addons
    kdePackages.konversation # IRC client
+   kdePackages.kdeconnect-kde # Adds communication between other devices include SMS
    kdePackages.kcalc # Calculator
    kdePackages.kcharselect # Character map
    kdePackages.kclock # Clock app
