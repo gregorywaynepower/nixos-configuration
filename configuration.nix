@@ -108,6 +108,9 @@
   # Install firefox.
   programs.firefox.enable = true;
 
+  # Add SMS functionality for KDE Kontact
+  programs.kdeconnect.enable = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -177,7 +180,6 @@
    kdePackages.kdepim-runtime
    kdePackages.kdepim-addons
    kdePackages.konversation # IRC client
-   kdePackages.kdeconnect-kde # Adds communication between other devices include SMS
    kdePackages.kcalc # Calculator
    kdePackages.kcharselect # Character map
    kdePackages.kclock # Clock app
