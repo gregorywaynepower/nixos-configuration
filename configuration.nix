@@ -182,6 +182,7 @@
 
     # Productivity
     kdePackages.kate
+    kdePackages.kmail
     kdePackages.kmail-account-wizard
     kdePackages.konversation # IRC client
     kdePackages.kcalc # Calculator
