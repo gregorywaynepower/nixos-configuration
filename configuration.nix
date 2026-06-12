@@ -224,10 +224,6 @@
   # Steam
   programs.steam = {
     enable = true;
-    # extest.enable = true;
-    # extraPackages = [
-    #    pkgs.hidapi
-    # ];
   };
   programs.steam.gamescopeSession.enable = true;
   hardware.steam-hardware.enable = true;
