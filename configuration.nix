@@ -144,6 +144,8 @@
     # System Tools
     pciutils
     wl-clipboard
+    fd
+    ripgrep
 
     # General Development Tools
     vim
