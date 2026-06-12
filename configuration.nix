@@ -133,6 +133,7 @@
     unstable.neovim
     unstable.pixi
     unstable.rustup
+    unstable.nix-init
     tmux
     marksman # markdown helper
     nil # langauage server for nix
@@ -217,8 +218,15 @@
 
 
   # Steam
-  programs.steam.enable = true;
+  programs.steam = {
+    enable = true;
+    extest.enable = true;
+    extraPackages = [
+       pkgs.hidapi
+    ];
+  };
   programs.steam.gamescopeSession.enable = true;
+  hardware.steam-hardware.enable = true;
 
   # Proton
   programs.gamemode.enable = true;
