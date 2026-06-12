@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
@@ -10,6 +10,21 @@
       ./hardware-configuration.nix
     ];
 
+     # Nix Kernel Binary Cache
+
+     nix.settings = {
+      substituters = [
+        "https://cache.garnix.io"
+        "https://attic.xuyh0120.win/lantian"
+      ];
+      trusted-public-keys = [
+        "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
+        "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
+      ];
+    }; 
+
+  nixpkgs.overlays = [ inputs.nix-cachyos-kernel.overlays.pinned ]; # Guarantees you have binary cache, but initializes another nixpkgs instance.
+  
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -20,7 +35,7 @@
   
 
   # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto; 
 
   networking.hostName = "bonobo-ws"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -111,15 +126,11 @@
   # Add SMS functionality for KDE Kontact
   programs.kdeconnect.enable = true;
 
+  # Add nh, yet another Nix CLI helper
+  programs.nh.enable = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  # Create an alias for the unstable channel
-  nixpkgs.config.packageOverrides = pkgs: {
-    unstable = import <nixos-unstable> { # pass the nixpkgs config to the unstable alias # to ensure `allowUnfree = true;` is propagated:
-      config = config.nixpkgs.config;
-    };
-  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -133,22 +144,22 @@
     wl-clipboard
 
     # Developer Tools
-    unstable.bacon
-    unstable.clippy
-    unstable.gh
-    unstable.git
+    bacon
+    clippy
+    gh
+    git
     gnupg
-    unstable.neovim
-    unstable.pixi
-    unstable.rustup
-    unstable.nix-init
+    neovim
+    pixi
+    rustup
+    nix-init
     tmux
     marksman # markdown helper
     nil # langauage server for nix
     gcc
 
     # Reading
-    unstable.calibre
+    calibre
 
     # Gaming
     discord
@@ -202,15 +213,15 @@
 
     # IDEs
     vscode-fhs
-    unstable.positron-bin # will need to move to unstable for this package
-    unstable.dbeaver-bin  # will need to move to unstable for this package
+    positron-bin # will need to move to unstable for this package
+    dbeaver-bin  # will need to move to unstable for this package
 
 
     # Geospatial
     gdal
     grass
     pdal
-    unstable.qgis
+    qgis
     saga
 
     # Databases
@@ -219,7 +230,7 @@
     postgresql18Packages.pgrouting
     postgresql18Packages.postgis
 
-    unstable.duckdb        # will need to move to unstable for this package
+    duckdb        # will need to move to unstable for this package
     sqlite
  
   ];
@@ -249,7 +260,7 @@
 
   hardware.nvidia = {
     modesetting.enable = true;
-    open = false;
+    open = true;
     package = config.boot.kernelPackages.nvidiaPackages.latest;
   };
 
@@ -279,8 +290,6 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.11"; # Did you read the comment?
-  system.autoUpgrade.enable = true;
-  system.autoUpgrade.allowReboot = false;
 
   # Add Extra Experimental Features
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
