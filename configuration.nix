@@ -111,40 +111,44 @@
     pciutils
 
     # Developer Tools
-    git
+    bacon
+    clippy
     gh
+    git
     gnupg
-    pixi
     neovim
+    pixi
+    rustup
+    tmux
 
     # Reading
     calibre
 
     # Gaming
-    protonup-ng
-    mangohud
     discord
+    mangohud
+    protonup-ng
 
     # Music
-    spotify
     shortwave
+    spotify
 
     # Browsers and Desktop Applications
-    brave
     bitwarden-desktop
+    brave
     
     # Audio and Video
     ffmpeg-full
-    vlc
     kdePackages.kdenlive
+    vlc
 
    # Productivity
-   libreoffice
    kdePackages.kontact
+   libreoffice
    
    # Images
-   gimp
    blender
+   gimp
    imagemagick
 
     # IDEs
@@ -152,18 +156,19 @@
     # positron-bin # will need to move to unstable for this package
     # dbeaver-bin  # will need to move to unstable for this package
 
+
     # Geospatial
-    qgis
-    grass
-    saga
     gdal
+    grass
     pdal
+    qgis
+    saga
 
     # Databases
     postgresql_18
-    postgresql18Packages.postgis
-    postgresql18Packages.pgrouting
     postgresql18Packages.pg_repack
+    postgresql18Packages.pgrouting
+    postgresql18Packages.postgis
 
     duckdb        # will need to move to unstable for this package
     sqlite
