@@ -115,6 +115,7 @@
 
     # System Tools
     pciutils
+    wl-clipboard
 
     # Developer Tools
     bacon
