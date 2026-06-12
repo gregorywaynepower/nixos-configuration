@@ -193,6 +193,11 @@
     blender
     slack
 
+    # Geospatial
+    qgis
+    grass
+    josm
+
     # Productivity
     kdePackages.kate
     kdePackages.kmail-account-wizard
