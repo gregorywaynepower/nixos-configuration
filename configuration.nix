@@ -191,6 +191,7 @@
     # Browsers and Desktop Applications
     bitwarden-desktop
     blender
+    signal-desktop
     slack
 
     # Geospatial
