@@ -30,7 +30,7 @@
 [Some notes on nix flakes - Julia Evans](https://jvns.ca/blog/2023/11/11/notes-on-nix-flakes/)
 [Tour of Nix](https://nixcloud.io/tour/?id=introduction%2Fnix)
 
-## How do I remove older generations from the bootloader?
+## How do I remove older generations from the bootloader in using channels (not flakes)?
 
 First, remove some system generations of your system, then rebuild. The rebuild script will remove stale boot entries.
 
@@ -40,3 +40,19 @@ The first command, in the example below, removes system generations older than 1
 sudo nix-env --delete-generations --profile /nix/var/nix/profiles/system 14d
 sudo nixos-rebuild boot
 ```
+
+## Flake specific notes
+
+### How to a test an environment via flakes?
+
+```
+# from inside the directory with the flake.nix and lock.nix
+nh os test .
+```
+
+### How do I create a new boot entry?
+
+```
+nh os boot .
+```
+
