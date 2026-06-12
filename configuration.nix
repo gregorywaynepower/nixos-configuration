@@ -160,6 +160,8 @@
    kdePackages.kaddressbook
    kdePackages.akregator # RSS Feed Reader
    kdePackages.akonadi # Cross-desktop storage service for PIM data providing concurrent access
+   kdePackages.kdepim-runtime
+   kdePackages.kdepim-addons
    kdePackages.konversation # IRC client
    kdePackages.kcalc # Calculator
    kdePackages.kcharselect # Character map
