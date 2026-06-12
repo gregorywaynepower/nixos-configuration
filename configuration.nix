@@ -14,6 +14,11 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.kernel.sysctl = {
+    "vm.max_map_count" = 2147483642;
+  };
+  
+
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
@@ -102,6 +107,9 @@
 
   # Install firefox.
   programs.firefox.enable = true;
+
+  # Add SMS functionality for KDE Kontact
+  programs.kdeconnect.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -220,10 +228,6 @@
   # Steam
   programs.steam = {
     enable = true;
-    extest.enable = true;
-    extraPackages = [
-       pkgs.hidapi
-    ];
   };
   programs.steam.gamescopeSession.enable = true;
   hardware.steam-hardware.enable = true;
