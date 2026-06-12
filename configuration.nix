@@ -92,6 +92,9 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  # Add pwfeedback to sudo
+  security.sudo.extraConfig = "Defaults pwfeedback";
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.gregorywpower = {
     isNormalUser = true;
