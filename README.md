@@ -15,7 +15,8 @@
 2. Evaluate nixpkgs-unstable as software source
 3. Research Home Manager
 4. Research Flakes
-5. Keep tabs on SELinux implementation
+5. [Set up and migrate Postgres database](https://nixos.org/manual/nixos/stable/#module-postgresql)
+6. Keep tabs on SELinux implementation
 
 
 [NixOS Manual](https://nixos.org/manual/nixos/stable/)
