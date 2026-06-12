@@ -170,6 +170,7 @@
     rustup
     clippy
     bacon
+    gcc
 
     # Reading
     calibre
