@@ -15,6 +15,18 @@
             enable = true;
             enableBashIntegration = true;
           };
+          helix = {
+            enable = true;
+            settings = {
+              editor = {
+                line-number = "relative";
+                whitespace = {
+                  render = "all";
+                };
+              };
+            theme = "dark_high_contrast";
+            };
+          };
         };
       };
     };
