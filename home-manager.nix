@@ -5,11 +5,11 @@
   home-manager.useUserPackages = true;
   home-manager.extraSpecialArgs = { inherit inputs; };
   home-manager.users.gregorywpower = {
-    programs {
+    programs = {
       zellij = {
         enable = true;
         enableBashIntegration = true;
-      }
-    }
+      };
+    };
   };
 }
