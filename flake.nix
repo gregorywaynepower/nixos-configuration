@@ -2,19 +2,17 @@
   description = "initial flake";
 
   inputs = {
-     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    home-manager.url = "github:nix-community/home-manager";
   };
 
-  outputs =
-    { self, ... }@inputs:
-    {
+  outputs = inputs: {
 
-      nixosConfigurations.bonobo-ws = inputs.nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs;
-        };
-        modules = [ ./configuration.nix ];
+    nixosConfigurations.bonobo-ws = inputs.nixpkgs.lib.nixosSystem {
+      specialArgs = {
+        inherit inputs;
       };
-
+      modules = [ ./configuration.nix ];
     };
+  };
 }
