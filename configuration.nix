@@ -186,6 +186,7 @@
 
     # Images
     imagemagick
+    gimp
 
     # Music
     spotify
