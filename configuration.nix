@@ -154,6 +154,8 @@
     wl-clipboard
     fd
     ripgrep
+    htop
+    nvtopPackages.nvidia
 
     # General Development Tools
     vim
