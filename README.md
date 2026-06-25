@@ -52,6 +52,8 @@ First, remove some system generations of your system, then rebuild. The rebuild 
 
 The first command, in the example below, removes system generations older than 14 days.
 
+*You must do a `nixos-rebuild [switch, boot]` to apply the changes to the boot menu.*
+
 ```
 sudo nix-env --delete-generations --profile /nix/var/nix/profiles/system 14d
 sudo nixos-rebuild boot
