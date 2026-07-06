@@ -20,6 +20,9 @@
             settings = {
               editor = {
                 line-number = "relative";
+                soft-wrap = {
+                  enable = true;
+                };
                 whitespace = {
                   render = "all";
                 };
