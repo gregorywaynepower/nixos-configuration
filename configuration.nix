@@ -216,6 +216,7 @@
     kdiff3 # File/directory comparison tool
     libreoffice
     obsidian
+    typst
 
     # Hardware/System Utilities (Optional)
     kdePackages.isoimagewriter # Write hybrid ISOs to USB
