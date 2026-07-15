@@ -207,6 +207,7 @@
     # Productivity
     kdePackages.kate
     kdePackages.kmail-account-wizard
+    kdePackages.korganizer
     kdePackages.konversation # IRC client
     kdePackages.kcalc # Calculator
     kdePackages.kcharselect # Character map
