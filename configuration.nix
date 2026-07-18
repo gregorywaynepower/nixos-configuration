@@ -200,8 +200,8 @@
     slack
 
     # Geospatial
-    # qgis
-    # grass
+    qgis
+    grass
     josm
 
     # Productivity
