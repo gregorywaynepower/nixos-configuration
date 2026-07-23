@@ -164,6 +164,7 @@
     git
     gh
     gnupg
+    devenv
 
     # Nix Development Tools
     nix-init
