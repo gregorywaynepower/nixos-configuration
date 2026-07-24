@@ -202,7 +202,6 @@
 
     # Geospatial
     # qgis
-    qgis-ltr
     grass
     josm
 
