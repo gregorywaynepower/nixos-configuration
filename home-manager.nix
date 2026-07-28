@@ -11,9 +11,11 @@
       gregorywpower = {
         home.stateVersion = config.system.stateVersion;
         programs = {
+          bash = {
+            enable = true;
+          };
           zellij = {
             enable = true;
-            enableBashIntegration = true;
           };
           helix = {
             enable = true;
