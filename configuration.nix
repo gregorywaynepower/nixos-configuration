@@ -199,7 +199,7 @@
     slack
 
     # Geospatial
-    # qgis
+    qgis
     grass
     josm
 
