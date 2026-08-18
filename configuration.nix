@@ -163,6 +163,7 @@
     gh
     gnupg
     devenv
+    positron-bin
 
     # Nix Development Tools
     nix-init
