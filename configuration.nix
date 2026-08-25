@@ -164,6 +164,7 @@
     gnupg
     devenv
     positron-bin
+    quarto
 
     # Nix Development Tools
     nix-init
