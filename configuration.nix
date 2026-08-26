@@ -162,6 +162,7 @@
     git
     gh
     gnupg
+    secretspec
     devenv
     positron-bin
     quarto
