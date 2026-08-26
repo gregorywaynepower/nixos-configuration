@@ -13,6 +13,7 @@
         programs = {
           bash = {
             enable = true;
+            bashrcExtra =''eval "$(devenv hook bash)"'';
           };
           zellij = {
             enable = true;
