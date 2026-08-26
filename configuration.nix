@@ -197,6 +197,7 @@
 
     # Browsers and Desktop Applications
     bitwarden-desktop
+    bitwarden-cli
     blender
     signal-desktop
     slack
