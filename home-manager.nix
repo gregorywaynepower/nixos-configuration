@@ -26,6 +26,11 @@
           };
           zellij = {
             enable = true;
+            settings = {
+              # Reference https://github.com/zellij-org/zellij/issues/4649#issuecomment-3901565014 for fix.
+              # Reference https://github.com/zellij-org/zellij/issues/5191 for upstream reason for fix.
+              support_kitty_keyboard_protocol = false;
+            };
           };
           helix = {
             enable = true;
