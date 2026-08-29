@@ -11,6 +11,15 @@
       gregorywpower = {
         home.stateVersion = config.system.stateVersion;
         programs = {
+          ghostty = {
+            enable = true;
+            systemd = {
+              enable = true;
+            };
+            settings = {
+              theme = "adwaita-dark";
+            };
+          };
           bash = {
             enable = true;
             bashrcExtra =''eval "$(devenv hook bash)"'';
@@ -30,7 +39,7 @@
                   render = "all";
                 };
               };
-            theme = "dark_high_contrast";
+            theme = "adwaita-dark";
             };
           };
         };
