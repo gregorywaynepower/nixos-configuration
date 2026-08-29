@@ -17,7 +17,7 @@
               enable = true;
             };
             settings = {
-              theme = "adwaita-dark";
+              theme = "Adwaita Dark";
             };
           };
           bash = {
