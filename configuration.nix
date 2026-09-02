@@ -118,7 +118,6 @@
     enable = true;
     kontact = true;
     kmail = true;
-    merkuro = true;
   };
 
   # Add nh, yet another Nix CLI helper
