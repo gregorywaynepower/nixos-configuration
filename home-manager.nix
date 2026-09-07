@@ -24,6 +24,12 @@
             enable = true;
             bashrcExtra =''eval "$(devenv hook bash)"'';
           };
+          tmux = {
+            enable = true;
+            mouse = true;
+            clock24 = true;
+            keyMode = "vi";
+          };
           zellij = {
             enable = true;
             settings = {
