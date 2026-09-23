@@ -171,6 +171,10 @@
     nix-init
     nil # language server for nix
 
+    # Network Tools
+    wireshark
+    wireshark-cli
+
     # Rust Development Tools
     rustup
     clippy
