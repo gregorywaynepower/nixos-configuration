@@ -208,7 +208,7 @@
 
     # Geospatial
     qgis
-    grass
+    # grass
     josm
 
     # Productivity
