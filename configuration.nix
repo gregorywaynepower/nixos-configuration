@@ -166,6 +166,7 @@
     devenv
     positron-bin
     quarto
+    typst
 
     # Nix Development Tools
     nix-init
@@ -224,7 +225,6 @@
     kdiff3 # File/directory comparison tool
     libreoffice
     obsidian
-    typst
     font-awesome # Font Awesome OTF Fonts
 
     # Hardware/System Utilities (Optional)
