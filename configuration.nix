@@ -128,7 +128,7 @@
     enable = true;
     localNetworkGameTransfers.openFirewall = true;
     remotePlay.openFirewall = true;
-    extraPackages = [ pkgs.hidapi ];
+    extraPackages = [ pkgs.hidapi pkgs.kdePackages.breeze];
   };
 
   # GameMode is a daemon/lib combo for Linux that allows games to request a set
