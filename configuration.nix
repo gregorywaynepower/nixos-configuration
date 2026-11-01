@@ -123,6 +123,9 @@
   # Add nh, yet another Nix CLI helper
   programs.nh.enable = true;
 
+  # Add nix-ld to enable bundled bindaries to run.
+  programs.nix-ld.enable = true;
+
   # Steam Configuration
   programs.steam = {
     enable = true;
