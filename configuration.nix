@@ -70,7 +70,19 @@
   };
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [
+      cups-filters
+      cups-browsed
+    ];
+  };
+
+  # Enables auto-discovery of network printers
+  services.avahi = {
+    nssmdns4 = true;
+    openFirewall = true;
+  };
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
